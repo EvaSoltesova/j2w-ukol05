@@ -5,8 +5,88 @@
     <title>Registrace na letní dětský tábor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 </head>
 <body>
-    TODO
+<div class="container">
+    <form th:action="@{/}" method="post">
+        <h1>Registrační formulář</h1>
+        <div>
+        <label for="jmeno" class="radek">Jméno:</label>
+        <input id="jmeno" type="text" th:field="${form.jmeno}"/>
+        <div class="error" th:if="${#fields.hasErrors('form.jmeno')}" th:errors="${form.jmeno}"></div>
+        </div>
+        <div>
+        <label for="prijmeni" class="radek">Příjmení:</label>
+        <input id="prijmeni" type="text" th:field="${form.prijmeni}"/>
+        <div class="error" th:if="${#fields.hasErrors('form.prijmeni')}" th:errors="${form.prijmeni}"></div>
+        </div>
+        <div>
+        <label for="datumNarozeni" class="radek">Datum narození:</label>
+        <input id="datumNarozeni" type="date" th:field="${form.datumNarozeni}"/>
+        <div class="error" th:if="${#fields.hasErrors('form.datumNarozeni')}" th:errors="${form.datumNarozeni}"></div>
+        </div>
+        <div class="radek">Pohlaví:</div>
+        <div class="skupina">
+
+        <input id="chlapec" type="radio" th:field="${form.pohlavi}" value="CHLAPEC"/>
+        <label for="chlapec">Chlapec</label>
+
+        <input id="divka" type="radio" th:field="${form.pohlavi}" value="DIVKA"/>
+        <label for="divka">Dívka</label>
+
+        <div class="radek">Sporty:</div>
+        <label>
+            <input type="checkbox" th:field="${form.sport}" value="PLAVANI"/>Plavání
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" th:field="${form.sport}" value="BEH"/>Běh
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" th:field="${form.sport}" value="CYKLISTIKA"/>Cyklistika
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" th:field="${form.sport}" value="FOTBAL"/>Fotbal
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" th:field="${form.sport}" value="BASKETBAL"/>Basketbal
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" th:field="${form.sport}" value="TENIS"/>Tenis
+        </label>
+            <div class="error" th:if="${#fields.hasErrors('form.sport')}" th:errors="${form.sport}"></div>
+        <div>
+        <label for="turnus" class="radek">Turnus:</label>
+        <select id="turnus" th:field="${form.turnus}">
+            <option value=""></option>
+            <option value="1">5. – 11. července</option>
+            <option value="2">12. – 18. července</option>
+            <option value="3">19. – 25. července</option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('form.turnus')}" th:errors="${form.turnus}"></div>
+        </div>
+        <div>
+        <label for="email" class="radek">E-mail rodiče (nepovinný):</label>
+        <input id="email" type="email" th:field="${form.email}"/>
+        <div class="error" th:if="${#fields.hasErrors('form.email')}" th:errors="${form.email}"></div>
+        </div>
+        <div>
+        <label for="telefon" class="radek">Telefon rodiče (nepovinný):</label>
+        <input id="telefon" type="telefon" th:field="${form.telefon}"/>
+        <div class="error" th:if="${#fields.hasErrors('form.telefon')}" th:errors="${form.telefon}"></div>
+        </div>
+        <div>
+        <button type="submit">Objednat</button>
+        </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
